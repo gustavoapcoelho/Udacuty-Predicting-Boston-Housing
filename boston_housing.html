@@ -13629,7 +13629,9 @@ Standard deviation of prices: $165171.13154429474
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>For checking the performance of the learning algorithm model is very recommended that you use different datasets for training and testing to not make a overfitting.</p>
+<p>For checking the performance of the learning algorithm model is very recommended that you use different datasets for training and testing to not make overfitting.</p>
+<p>When we have new values in the dataset the model has kind of memorized the old values, them if you check out the training accuracy for this particular model, you will see that the accuracy is just 100% with simply 0 error.</p>
+<p>This is one of the reasons we need to use training and test set separation. After we have trained our model, we should test it on fresh examples so that we can avoid problems like overfitting. We can also estimate how well our model is performing given that it is facing new inputs. Based on the performance, we can proceed to developing our system further.</p>
 
 </div>
 </div>
@@ -13794,6 +13796,7 @@ Think about the pros and cons of adding more training points based on if the tra
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <p>The best maximum depth that we see in the graph is 4. This value indicates the best score and a low variance between the training and test results. The gap between the training score and testing score does not seem to be substantial too, indicating that the model may not be suffering from a high variance scenario.</p>
+<p>In case of a linear model, degrees of freedom essentially equal data dimensionality (a number of columns). We find that thinking in terms of dimensionality vs number of examples is a convenient shortcut.</p>
 
 </div>
 </div>
@@ -13927,6 +13930,23 @@ If we do not use a cross-validation set and we run grid-search, we would have di
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Answer: </strong></p>
+<p>max_depth : Is the maximum depth of the tree. If None, then nodes are expanded until all leaves are pure or until all leaves contain less than min_samples_split samples.</p>
+<p>min_samples_split : Is the minimum number of samples required to split an internal node: If int, then consider min_samples_split as the minimum number. If float, then min_samples_split is a fraction and ceil(min_samples_split * n_samples) are the minimum number of samples for each split.</p>
+<p>min_samples_leaf : Is the minimum number of samples required to be at a leaf node. A split point at any depth will only be considered if it leaves at least min_samples_leaf training samples in each of the left and right branches. This may have the effect of smoothing the model, especially in regression.</p>
+<p>If int, then consider min_samples_leaf as the minimum number.
+If float, then min_samples_leaf is a fraction and ceil(min_samples_leaf * n_samples) are the minimum number of samples for each node</p>
+<p>Below shows an example of the values in each hyperparameter which would be tested over the various sequences.</p>
+<p>{'min_samples_leaf':[2,4,8,16,20], 'min_samples_split':[2,4,6,8,10],'max_depth':[2,4,8,10]}</p>
+<p>The default values for the parameters controlling the size of the trees (e.g. max_depth, min_samples_leaf, etc.) lead to fully grown and unpruned trees which can potentially be very large on some data sets. To reduce memory consumption, the complexity and size of the trees should be controlled by setting those parameter values.</p>
+<p>The features are always randomly permuted at each split. Therefore, the best found split may vary, even with the same training data and max_features=n_features, if the improvement of the criterion is identical for several splits enumerated during the search of the best split. To obtain a deterministic behaviour during fitting, random_state has to be fixed.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
